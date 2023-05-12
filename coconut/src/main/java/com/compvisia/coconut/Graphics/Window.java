@@ -1,5 +1,6 @@
 package com.compvisia.coconut.Graphics;
 
+import com.compvisia.coconut.Input.Mouse;
 import com.compvisia.coconut.common.Math.Vector.Vector2i;
 import org.lwjgl.glfw.GLFWImage;
 import org.lwjgl.opengl.GL;
@@ -14,6 +15,8 @@ public class Window {
 
     public final long window;
     public static Vector2i size;
+
+    public static Mouse m;
 
     public Window(String name, Vector2i size, String icon) {
         glfwInit();
@@ -30,6 +33,11 @@ public class Window {
         updateFrame();
 
         glfwShowWindow(window);
+
+        m = new Mouse();
+
+        glfwSetCursorPosCallback(window, m.MousePosCallback);
+        glfwSetMouseButtonCallback(window, m.MouseClickCallback);
     }
 
     // 64x64 Image Recommended
