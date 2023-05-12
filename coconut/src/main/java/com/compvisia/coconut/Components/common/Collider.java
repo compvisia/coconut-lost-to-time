@@ -16,13 +16,14 @@ public class Collider {
         if(!Mouse.MouseClick.buttons[0]) return CollisionType.Collision;
         return CollisionType.Clicked;
     }
-    public CollisionType hasCollided(Vector2f collision) { return this.hasCollided(new Vector4f(collision.x,collision.y,1,1)); }
+    public CollisionType hasCollided(Vector2f collision) { if(collision == null) return CollisionType.Null; return this.hasCollided(new Vector4f(collision.x,collision.y,1,1)); }
 
     // Attachments
     public void attach(Transform transform) { this.transform = transform; }
 
     // Enum
     public enum CollisionType {
+        Null,
         None,
         Collision,
         Clicked
