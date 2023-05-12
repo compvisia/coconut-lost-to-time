@@ -1,0 +1,12 @@
+# Directories
+.gradle
+.idea
+
+build/
+test/
+
+# Extensions
+*.class
+*.log
+*.png
+*.jpg
