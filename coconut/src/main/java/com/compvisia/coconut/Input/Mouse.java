@@ -2,7 +2,6 @@ package com.compvisia.coconut.Input;
 
 import com.compvisia.coconut.common.Math.Vector.Vector2f;
 import org.lwjgl.glfw.GLFWCursorPosCallback;
-import org.lwjgl.glfw.GLFWCursorPosCallbackI;
 import org.lwjgl.glfw.GLFWMouseButtonCallback;
 
 import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;

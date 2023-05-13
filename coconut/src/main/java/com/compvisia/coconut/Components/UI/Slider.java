@@ -23,8 +23,6 @@ public class Slider {
         knob.r.changePath(paths[knob.c.hasCollided(Mouse.MousePos.pos).ordinal()]);
         if(knob.c.hasCollided(Mouse.MousePos.pos) == Collider.CollisionType.Clicked) knob.trans.v.x = Mouse.MousePos.pos.x-knob.trans.v.z/2;
 
-        System.out.println(value);
-
         value = (knob.trans.v.x-bar.trans.v.x)/bar.trans.v.z+0.25f;
         if(value < 0) { knob.trans.v.x = bar.trans.v.x-knob.trans.v.z/2; value = 0; }
         if(value > 1) { knob.trans.v.x = bar.trans.v.x+bar.trans.v.z-knob.trans.v.z/2; value = 1; }

@@ -21,23 +21,21 @@ Type this if you don't want the included libraries
 
 ```./gradlew build```
 
-If done correctly you will now have a jar file in the coconut/build/libs folder.
+You will now have the coconut.jar file in the coconut/build/libs folder!
 
 ## Adding Coconut
 
 [![Coconut Server Download Link](https://img.shields.io/badge/Server-Coconut-white)](https://server.compvisia.com/com/compvisia/coconut/latest/)
 
 As mentioned you can build Coconut or you can download Coconut via GitHub or via our server.<br>
-If downloaded from our server make sure that you downloaded the **coconut-latest.jar** file (this file will include every library used). 
-Simply add the jar file into your libs folder and register it in your ide or include it in your java make command.
-
-If you downloaded it, you will have the libraries that we use.
+If downloaded from our server make sure that you downloaded the **coconut.jar** file.
+Simply add the coconut.jar into your libs folder and register it in your ide or include it in your java compile command.
 
 If all goes as planned you now have successfully added Coconut to your project! 
 
 ## Issues and Pull Request
 
-Feel free to submit an issue if any errors occure or if you have an idea.<br>
+Feel free to submit an issue if any errors occur or if you have an idea.<br>
 Likewise you can make a pull request, if you have successfully resolved a bug, corrected grammatical errors, or implemented any other feature.
 
 ##### We do not rely on pull request or issues to resolve anything.
