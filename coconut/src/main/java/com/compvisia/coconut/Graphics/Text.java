@@ -1,8 +1,7 @@
 package com.compvisia.coconut.Graphics;
 
-import com.compvisia.coconut.Components.common.Collider;
-import com.compvisia.coconut.common.Math.Vector.Vector2i;
-import com.compvisia.coconut.common.Math.Vector.Vector4f;
+import com.compvisia.coconut.common.Math.Vector2i;
+import com.compvisia.coconut.common.Math.Vector4f;
 import org.lwjgl.BufferUtils;
 
 import java.awt.*;

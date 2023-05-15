@@ -2,8 +2,8 @@ package com.compvisia.coconut.Components.UI;
 
 import com.compvisia.coconut.Components.common.*;
 import com.compvisia.coconut.Input.Mouse;
-import com.compvisia.coconut.common.Math.Vector.Vector2f;
-import com.compvisia.coconut.common.Math.Vector.Vector4f;
+import com.compvisia.coconut.common.Math.Vector2f;
+import com.compvisia.coconut.common.Math.Vector4f;
 
 public class Slider {
 

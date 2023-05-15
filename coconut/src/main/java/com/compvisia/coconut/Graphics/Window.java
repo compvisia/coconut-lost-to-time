@@ -1,7 +1,7 @@
 package com.compvisia.coconut.Graphics;
 
 import com.compvisia.coconut.Input.Mouse;
-import com.compvisia.coconut.common.Math.Vector.Vector2i;
+import com.compvisia.coconut.common.Math.Vector2i;
 import org.lwjgl.glfw.GLFWImage;
 import org.lwjgl.opengl.GL;
 

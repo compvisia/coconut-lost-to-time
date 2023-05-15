@@ -1,9 +1,9 @@
 # Coconut
 
 [//]: # "[![Coconut Project Link](https://img.shields.io/badge/Project-Coconut-pink)](https://compvisia.com/projects/coconut)"
-A Library (mainly used) for creating games.
+### A Library made for game devs.
 
-Coconut is a game development focus Java library that includes graphics (only 2D for now), User Interface Components, Math utilities, Keyboard / Mouse and Controller inputs and more!
+Coconut is a game development focus Java library that includes graphics, User Interface Components, Math utilities, Keyboard / Mouse and Controller inputs and more!
 Hopefully this will make game development easier.
 
 Currently, we only support jars (Hopefully Gradle and Maven integrations soon).<br>
@@ -27,11 +27,10 @@ You will now have the coconut.jar file in the coconut/build/libs folder!
 
 [![Coconut Server Download Link](https://img.shields.io/badge/Server-Coconut-white)](https://server.compvisia.com/com/compvisia/coconut/latest/)
 
-As mentioned you can build Coconut or you can download Coconut via GitHub or via our server.<br>
-If downloaded from our server make sure that you downloaded the **coconut.jar** file.
-Simply add the coconut.jar into your libs folder and register it in your ide or include it in your java compile command.
+As mentioned you can download Coconut via GitHub or via our server. Make sure that you downloaded the **coconut.jar** file.<br>
 
-If all goes as planned you now have successfully added Coconut to your project! 
+Simply add the coconut.jar into your libs folder and register it in your ide or include it in your java compile command.
+you now have successfully added Coconut to your project!
 
 ## Issues and Pull Request
 

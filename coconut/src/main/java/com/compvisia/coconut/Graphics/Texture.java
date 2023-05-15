@@ -2,10 +2,10 @@ package com.compvisia.coconut.Graphics;
 
 import com.compvisia.coconut.Components.common.Transform;
 import com.compvisia.coconut.common.Math.Matrix4f;
-import com.compvisia.coconut.common.Math.Vector.Vector2f;
-import com.compvisia.coconut.common.Math.Vector.Vector2i;
+import com.compvisia.coconut.common.Math.Vector2f;
+import com.compvisia.coconut.common.Math.Vector2i;
 
-import com.compvisia.coconut.common.Math.Vector.Vector4f;
+import com.compvisia.coconut.common.Math.Vector4f;
 import org.lwjgl.BufferUtils;
 
 import java.nio.ByteBuffer;
