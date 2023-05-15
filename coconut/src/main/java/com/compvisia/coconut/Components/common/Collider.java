@@ -1,6 +1,7 @@
 package com.compvisia.coconut.Components.common;
 
 import com.compvisia.coconut.Input.Mouse;
+import com.compvisia.coconut.common.Collision.CollisionType;
 import com.compvisia.coconut.common.Math.Vector2f;
 import com.compvisia.coconut.common.Math.Vector4f;
 
@@ -20,12 +21,4 @@ public class Collider {
 
     // Attachments
     public void attach(Transform transform) { this.transform = transform; }
-
-    // Enum
-    public enum CollisionType {
-        Null,
-        None,
-        Collision,
-        Clicked
-    }
 }

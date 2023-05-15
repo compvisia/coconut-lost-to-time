@@ -2,6 +2,7 @@ package com.compvisia.coconut.Components.UI;
 
 import com.compvisia.coconut.Components.common.*;
 import com.compvisia.coconut.Input.Mouse;
+import com.compvisia.coconut.common.Collision.CollisionType;
 import com.compvisia.coconut.common.Math.Vector2f;
 import com.compvisia.coconut.common.Math.Vector4f;
 
@@ -21,7 +22,7 @@ public class Slider {
 
     public void update() {
         knob.r.changePath(paths[knob.c.hasCollided(Mouse.MousePos.pos).ordinal()]);
-        if(knob.c.hasCollided(Mouse.MousePos.pos) == Collider.CollisionType.Clicked) knob.trans.v.x = Mouse.MousePos.pos.x-knob.trans.v.z/2;
+        if(knob.c.hasCollided(Mouse.MousePos.pos) == CollisionType.Clicked) knob.trans.v.x = Mouse.MousePos.pos.x-knob.trans.v.z/2;
 
         value = (knob.trans.v.x-bar.trans.v.x)/bar.trans.v.z+0.25f;
         if(value < 0) { knob.trans.v.x = bar.trans.v.x-knob.trans.v.z/2; value = 0; }
