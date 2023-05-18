@@ -3,8 +3,8 @@ package com.compvisia.coconut.Components.UI;
 import com.compvisia.coconut.Components.common.*;
 import com.compvisia.coconut.Input.Mouse;
 import com.compvisia.coconut.common.Collision.CollisionType;
+import com.compvisia.coconut.common.Collision.Rectangle;
 import com.compvisia.coconut.common.Math.Vector2f;
-import com.compvisia.coconut.common.Math.Vector4f;
 
 public class Slider {
 
@@ -13,39 +13,39 @@ public class Slider {
     private final String[] paths;
     public float value;
 
-    public Slider(Vector4f pos, Vector2f knobSize, String[] paths) {
+    public Slider(Rectangle rectangle, Vector2f knobSize, String[] paths) {
         this.paths=paths;
 
-        bar = new Object(pos,this.paths[0]);
-        knob = new Object(new Vector4f(0, pos.y-knobSize.y/4, knobSize.x, knobSize.y), this.paths[0]);
+        bar = new Object(rectangle,this.paths[0]);
+        knob = new Object(new Rectangle(0, rectangle.y-knobSize.y/4, knobSize.x, knobSize.y), this.paths[0]);
     }
 
     public void update() {
-        knob.r.changePath(paths[knob.c.hasCollided(Mouse.MousePos.pos).ordinal()]);
-        if(knob.c.hasCollided(Mouse.MousePos.pos) == CollisionType.Clicked) knob.trans.v.x = Mouse.MousePos.pos.x-knob.trans.v.z/2;
+        knob.renderer.changePath(paths[knob.collider.hasCollided(Mouse.MousePos.pos).ordinal()]);
+        if(knob.collider.hasCollided(Mouse.MousePos.pos) == CollisionType.Clicked) knob.transform.rectangle.x = Mouse.MousePos.pos.x-knob.transform.rectangle.w/2;
 
-        value = (knob.trans.v.x-bar.trans.v.x)/bar.trans.v.z+0.25f;
-        if(value < 0) { knob.trans.v.x = bar.trans.v.x-knob.trans.v.z/2; value = 0; }
-        if(value > 1) { knob.trans.v.x = bar.trans.v.x+bar.trans.v.z-knob.trans.v.z/2; value = 1; }
+        value = (float) ((knob.transform.rectangle.x-bar.transform.rectangle.x)/bar.transform.rectangle.w+0.25f);
+        if(value < 0) { knob.transform.rectangle.x = bar.transform.rectangle.x-knob.transform.rectangle.w/2; value = 0; }
+        if(value > 1) { knob.transform.rectangle.x = bar.transform.rectangle.x+bar.transform.rectangle.w-knob.transform.rectangle.w/2; value = 1; }
     }
 
     public void render() {
-        bar.r.render();
-        knob.r.render();
+        bar.renderer.render();
+        knob.renderer.render();
     }
 
     private static class Object {
-        public Transform trans;
-        public Renderer r;
-        public Collider c;
+        public Transform transform;
+        public Renderer renderer;
+        public Collider collider;
 
-        public Object(Vector4f v, String s) {
-            trans = new Transform(v);
-            r = new Renderer(s);
-            c = new Collider();
+        public Object(Rectangle rectangle, String s) {
+            transform = new Transform(rectangle);
+            renderer = new Renderer(s);
+            collider = new Collider();
 
-            r.attach(trans);
-            c.attach(trans);
+            renderer.attach(transform);
+            collider.attach(transform);
         }
     }
 

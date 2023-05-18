@@ -13,24 +13,24 @@ import static org.lwjgl.opengl.GL11.GL_SRC_COLOR;
 
 public class Text {
 
-    private Texture t;
-    private BufferedImage b;
+    private Texture texture;
+    private BufferedImage buffer;
 
     private String text, font;
-    private int s;
+    private int scale;
 
-    private Vector4f v;
+    private Vector4f rect;
 
-    private Color c, bg;
+    private Color color, background;
 
-    public Text(String text, String font, Vector4f v, Color c, Color bg) {
-        this.text = text; this.font = font; this.v=v; this.c = c; this.bg = bg;
+    public Text(String text, String font, Vector4f rect, Color color, Color background) {
+        this.text = text; this.font = font; this.rect = rect; this.color = color; this.background = background;
 
         create();
     }
 
-    public Text(String text, String font, Vector4f v) {
-        this.text = text; this.font = font; this.v = v; this.c = new Color(0,0,0,255); this.bg = new Color(255,255,255,255);
+    public Text(String text, String font, Vector4f rect) {
+        this.text = text; this.font = font; this.rect = rect; this.color = new Color(0,0,0,255); this.background = new Color(255,255,255,255);
 
         create();
     }
@@ -38,27 +38,27 @@ public class Text {
     private void create() {
         setBufferedImage();
 
-        t = new Texture();
-        t.create(setData(), new Vector2i(s,s));
+        texture = new Texture();
+        texture.create(setData(), new Vector2i(scale, scale));
     }
 
     private void setBufferedImage() {
-        s = (int)(text.length()*v.w*1.4f);
-        b = new BufferedImage(s, s, BufferedImage.TYPE_4BYTE_ABGR);
-        Graphics2D g = b.createGraphics();
+        scale = (int)(text.length()* rect.w*1.4f);
+        buffer = new BufferedImage(scale, scale, BufferedImage.TYPE_4BYTE_ABGR);
+        Graphics2D g = buffer.createGraphics();
 
-        g.setBackground(bg);
-        g.setColor(c);
+        g.setBackground(background);
+        g.setColor(color);
 
-        g.setFont(new Font(font, Font.PLAIN, (int) v.w));
-        g.drawString(text, 0, v.w);
+        g.setFont(new Font(font, Font.PLAIN, (int) rect.w));
+        g.drawString(text, 0, rect.w);
     }
 
     private ByteBuffer setData() {
-        int co = b.getColorModel().getNumComponents();
+        int co = buffer.getColorModel().getNumComponents();
 
-        byte[] d = new byte[co * s * s];
-        b.getRaster().getDataElements(0, 0, s, s, d);
+        byte[] d = new byte[co * scale * scale];
+        buffer.getRaster().getDataElements(0, 0, scale, scale, d);
 
         ByteBuffer data = BufferUtils.createByteBuffer(d.length);
         data.put(d);
@@ -70,20 +70,20 @@ public class Text {
         this.text = text;
         setBufferedImage();
 
-        t.create(setData(),new Vector2i(s,s));
+        texture.create(setData(),new Vector2i(scale, scale));
     }
 
     public void render() {
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_COLOR,GL_ONE_MINUS_SRC_COLOR);
-        t.render(new Vector4f(v.x,v.y,s,s));
+        texture.render(new Vector4f(rect.x, rect.y, scale, scale));
         glBlendFunc(GL_SRC_COLOR,GL_SRC_COLOR);
         glDisable(GL_BLEND);
     }
 
     //public void renderWith() { t.render(); }
 
-    public void setAll(String text, String font, Vector4f v, Color c, Color bg) { this.text = text; this.font = font; this.v = v; this.c = c; this.bg = bg; }
+    public void setAll(String text, String font, Vector4f rect, Color color, Color background) { this.text = text; this.font = font; this.rect = rect; this.color = color; this.background = background; }
 
 
 }

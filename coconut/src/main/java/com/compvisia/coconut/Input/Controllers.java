@@ -9,18 +9,18 @@ import static org.lwjgl.glfw.GLFW.*;
 
 public class Controllers {
 
-    public List<Controller> cons;
+    public List<Controller> controllers;
 
     public Controllers() {
-        cons = new ArrayList<>();
+        controllers = new ArrayList<>();
 
         if(!glfwJoystickPresent(0)) return;
 
         int i=0;
-        while(glfwJoystickPresent(i)) { cons.add(new Controller(i));i++; }
+        while(glfwJoystickPresent(i)) { controllers.add(new Controller(i));i++; }
     }
 
-    public void poll() { cons.forEach(Controller::poll); }
+    public void poll() { controllers.forEach(Controller::poll); }
 
     public static class Controller {
 
@@ -44,22 +44,22 @@ public class Controllers {
 
     public static class Axis {
 
-        private final Controller con;
+        private final Controller controller;
 
         public int binding;
 
-        public float[] raw;
+        public float[] rawInput;
 
-        public Axis(Controller con, int binding) {
-            this.con=con;this.binding=binding;
-            raw = new float[2];
+        public Axis(Controller controller, int binding) {
+            this.controller = controller; this.binding=binding;
+            rawInput = new float[2];
         }
 
         public void setBindings(int binding) { this.binding=binding; }
 
         public void poll() {
-            if(binding == Controller.LEFT_STICK)  { raw[0] = con.axes.get(0); raw[1] = con.axes.get(1); }
-            if(binding == Controller.RIGHT_STICK) { raw[0] = con.axes.get(2); raw[1] = con.axes.get(3); }
+            if(binding == Controller.LEFT_STICK)  { rawInput[0] = controller.axes.get(0); rawInput[1] = controller.axes.get(1); }
+            if(binding == Controller.RIGHT_STICK) { rawInput[0] = controller.axes.get(2); rawInput[1] = controller.axes.get(3); }
         }
     }
 }
