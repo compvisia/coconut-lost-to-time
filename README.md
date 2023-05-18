@@ -24,7 +24,7 @@ You will now have the **coconut.jar** file in your coconut/build/libs folder!
 
 ## Adding Coconut
 
-[![Build Artifact](https://github.com/compvisia/coconut/actions/workflows/artifact.yml/badge.svg)](https://github.com/compvisia/coconut/actions/workflows/artifact.yml)
+[![CI/CD](https://github.com/compvisia/coconut/actions/workflows/continuous.yml/badge.svg)](https://github.com/compvisia/coconut/actions/workflows/continuous.yml)
 
 Click the latest Artifact, download it and unzip it.
 
