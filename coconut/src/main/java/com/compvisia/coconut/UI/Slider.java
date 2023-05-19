@@ -1,6 +1,6 @@
-package com.compvisia.coconut.Components.UI;
+package com.compvisia.coconut.UI;
 
-import com.compvisia.coconut.Components.common.*;
+import com.compvisia.coconut.Graphics.Texture;
 import com.compvisia.coconut.Input.Mouse;
 import com.compvisia.coconut.common.Collision.Rectangle;
 import com.compvisia.coconut.common.Math.Vector2f;
@@ -21,9 +21,9 @@ public class Slider {
 
     public void update() {
 
-        knob.renderer.changePath(paths[0]);
+        knob.texture.create(paths[0]);
         if(!knob.rectangle.hasCollided(Mouse.MousePos.pos)) return;
-        else knob.renderer.changePath(paths[1]);
+        else knob.texture.create(paths[1]);
 
         if(knob.rectangle.hasCollided(Mouse.MousePos.pos)) knob.rectangle.x = Mouse.MousePos.pos.x-knob.rectangle.w/2;
 
@@ -33,17 +33,17 @@ public class Slider {
     }
 
     public void render() {
-        bar.renderer.render();
-        knob.renderer.render();
+        bar.texture.render(bar.rectangle);
+        knob.texture.render(knob.rectangle);
     }
 
     private static class Object {
-        public Renderer renderer;
+        public Texture texture;
         public Rectangle rectangle;
 
         public Object(Rectangle rectangle, String s) {
             this.rectangle = rectangle;
-            renderer = new Renderer(s,rectangle);
+            texture = new Texture(s);
         }
     }
 

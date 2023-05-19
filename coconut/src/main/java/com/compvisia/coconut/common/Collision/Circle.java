@@ -1,6 +1,5 @@
 package com.compvisia.coconut.common.Collision;
 
-import com.compvisia.coconut.Input.Mouse;
 import com.compvisia.coconut.common.Math.Vector2f;
 
 public class Circle {
