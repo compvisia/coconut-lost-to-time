@@ -1,6 +1,5 @@
 package com.compvisia.coconut.Graphics;
 
-import com.compvisia.coconut.Components.common.Transform;
 import com.compvisia.coconut.common.Collision.Rectangle;
 import com.compvisia.coconut.common.Math.Matrix4f;
 import com.compvisia.coconut.common.Math.Vector2f;
@@ -112,7 +111,6 @@ public class Texture {
     public void render(Rectangle rect) { this.render(new Vector2f[]{new Vector2f(rect.x,rect.y),new Vector2f(rect.w, rect.h)}); }
     public void render(Vector2f v) { this.render(new Vector2f[]{v,new Vector2f(width, height)}); }
     public void render(Vector4f v) { this.render(new Vector2f[]{new Vector2f(v.x,v.y),new Vector2f(v.z,v.w)}); }
-    public void render(Transform transform) { this.render(transform.rectangle); }
 
     public void delete() {
         mesh.unbind();
