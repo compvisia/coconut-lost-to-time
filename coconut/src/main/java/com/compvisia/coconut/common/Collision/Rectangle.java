@@ -7,7 +7,7 @@ import static com.compvisia.coconut.common.Math.Math.*;
 
 public class Rectangle {
 
-    private Vector4f outline;
+    public Vector4f outline;
     public float x,y,w,h;
 
     public Rectangle(Vector4f outline) { this.outline = outline; this.x = outline.x; this.y = outline.y; this.w = outline.z; this.h = outline.w; }
@@ -22,7 +22,7 @@ public class Rectangle {
         Vector2f center = new Vector2f(x+w/2f,y+h/2f);
         Vector2f distance = new Vector2f(c.pos.x, c.pos.y).sub(center);
 
-        Vector2f closest = new Vector2f(clamp(distance.x,-center.x,center.x),clamp(distance.x,-center.x,center.x)).add(center);
+        Vector2f closest = clamp(distance,new Vector2f(-center.x,-center.y),center).add(center);
 
         distance = new Vector2f(closest.x,closest.y).sub(c.pos);
 

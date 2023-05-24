@@ -62,6 +62,19 @@ public class Math {
     public static float  clamp(float a, float b, float val)    { return max(a,min(b, val)); }
     public static double clamp(double a, double b, double val) { return max(a,min(b, val)); }
 
+    public static Vector2i clamp(Vector2i a, Vector2i b, Vector2i val) { return new Vector2i(clamp(a.x,b.x,val.x),clamp(a.x,b.x,val.x)); }
+    public static Vector2f clamp(Vector2f a, Vector2f b, Vector2f val) { return new Vector2f(clamp(a.x,b.x,val.x),clamp(a.x,b.x,val.x)); }
+    public static Vector2d clamp(Vector2d a, Vector2d b, Vector2d val) { return new Vector2d(clamp(a.x,b.x,val.x),clamp(a.x,b.x,val.x)); }
+
+    public static Vector3i clamp(Vector3i a, Vector3i b, Vector3i val) { return new Vector3i(clamp(a.x,b.x,val.x),clamp(a.x,b.x,val.x),clamp(a.z,b.z,val.z)); }
+    public static Vector3f clamp(Vector3f a, Vector3f b, Vector3f val) { return new Vector3f(clamp(a.x,b.x,val.x),clamp(a.x,b.x,val.x),clamp(a.z,b.z,val.z)); }
+    public static Vector3d clamp(Vector3d a, Vector3d b, Vector3d val) { return new Vector3d(clamp(a.x,b.x,val.x),clamp(a.x,b.x,val.x),clamp(a.z,b.z,val.z)); }
+
+    public static Vector4i clamp(Vector4i a, Vector4i b, Vector4i val) { return new Vector4i(clamp(a.x,b.x,val.x),clamp(a.x,b.x,val.x),clamp(a.z,b.z,val.z),clamp(a.w,b.w,val.w)); }
+    public static Vector4f clamp(Vector4f a, Vector4f b, Vector4f val) { return new Vector4f(clamp(a.x,b.x,val.x),clamp(a.x,b.x,val.x),clamp(a.z,b.z,val.z),clamp(a.w,b.w,val.w)); }
+    public static Vector4d clamp(Vector4d a, Vector4d b, Vector4d val) { return new Vector4d(clamp(a.x,b.x,val.x),clamp(a.x,b.x,val.x),clamp(a.z,b.z,val.z),clamp(a.w,b.w,val.w)); }
+
+
 
     // Round, Floor, Ceil
     public static float  round(float a)  { return java.lang.Math.round(a); }
