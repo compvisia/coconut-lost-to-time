@@ -12,6 +12,8 @@ public class Button {
 
     private final String[] paths;
 
+    public boolean hovered, clicked;
+
     public Button(Rectangle rectangle, String[] paths) {
         this.paths=paths; this.rectangle = rectangle;
 
@@ -19,10 +21,11 @@ public class Button {
     }
 
     public void update() {
+        clicked = hovered = false;
         texture.create(paths[0]);
         if(!rectangle.hasCollided(Mouse.MousePos.pos)) return;
-        if(Mouse.MouseClick.buttons[0]) texture.create(paths[2]);
-        else texture.create(paths[1]);
+        if(Mouse.MouseClick.buttons[0]) { texture.create(paths[2]); clicked = true; }
+        else { texture.create(paths[1]); hovered = true; }
     }
 
     public void render() { texture.render(rectangle); }
