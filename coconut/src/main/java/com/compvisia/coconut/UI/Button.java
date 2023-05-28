@@ -21,11 +21,10 @@ public class Button {
     }
 
     public void update() {
-        clicked = hovered = false;
         texture.create(paths[0]);
-        if(!rectangle.hasCollided(Mouse.MousePos.pos)) return;
+        if(!rectangle.hasCollided(Mouse.MousePos.pos)) { hovered = false; return; }
         if(Mouse.MouseClick.buttons[0]) { texture.create(paths[2]); clicked = true; }
-        else { texture.create(paths[1]); hovered = true; }
+        else { texture.create(paths[1]); hovered = true; clicked = false; }
     }
 
     public void render() { texture.render(rectangle); }
