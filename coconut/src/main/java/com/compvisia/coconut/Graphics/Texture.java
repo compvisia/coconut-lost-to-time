@@ -1,5 +1,7 @@
 package com.compvisia.coconut.Graphics;
 
+import com.compvisia.coconut.Event.EventExecutor;
+import com.compvisia.coconut.Event.common.ErrorEvent;
 import com.compvisia.coconut.common.Collision.Rectangle;
 import com.compvisia.coconut.common.Math.Matrix4f;
 import com.compvisia.coconut.common.Math.Vector2f;
@@ -78,15 +80,14 @@ public class Texture {
 
         ByteBuffer d = stbi_load(this.path, w, h, c, 4);
 
-        if(d == null) { System.err.println("Unknown Path: "+this.path); }
+        if(d == null) { EventExecutor.callEvent(new ErrorEvent("Texture could not load")); return; }
 
         this.width = w.get();
         this.height = h.get();
 
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, this.width, this.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, d);
 
-        try { if(d != null) stbi_image_free(d); }
-        catch(Exception e) { System.exit(-1); }
+        stbi_image_free(d);
     }
 
     // TODO: Make Settings to Soft code the values to use window size / user entered size.
@@ -188,12 +189,12 @@ public class Texture {
 
             glCompileShader(vertexShader);
             if (glGetShaderi(vertexShader, GL_COMPILE_STATUS) != 1) {
-                System.err.println(glGetShaderInfoLog(vertexShader));
+                EventExecutor.callEvent(new ErrorEvent(glGetShaderInfoLog(vertexShader)));
             }
 
             glCompileShader(fragmentShader);
             if (glGetShaderi(fragmentShader, GL_COMPILE_STATUS) != 1) {
-                System.err.println(glGetShaderInfoLog(fragmentShader));
+                EventExecutor.callEvent(new ErrorEvent(glGetShaderInfoLog(fragmentShader)));
             }
 
             glAttachShader(program, vertexShader);
@@ -201,8 +202,7 @@ public class Texture {
 
             glLinkProgram(program);
             if (glGetProgrami(program, GL_LINK_STATUS) != 1) {
-                System.err.println(glGetProgramInfoLog(program));
-                System.exit(-1);
+                EventExecutor.callEvent(new ErrorEvent(glGetProgramInfoLog(program)));
             }
 
             glDeleteShader(vertexShader);

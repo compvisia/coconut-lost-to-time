@@ -9,8 +9,8 @@ public class EventExecutor {
 
     private static final List<Listener> listeners = new ArrayList<>();
 
-    public void addListener(Listener l) { listeners.add(l); }
-    public void callEvent(Event e) {
+    public static void addListener(Listener l) { listeners.add(l); }
+    public static void callEvent(Event e) {
 
         try { e.execute(); }
         catch(Exception ex) { new ExceptionEvent(ex).execute(); }
