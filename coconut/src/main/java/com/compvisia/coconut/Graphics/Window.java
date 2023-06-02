@@ -1,5 +1,8 @@
 package com.compvisia.coconut.Graphics;
 
+import com.compvisia.coconut.Event.EventExecutor;
+import com.compvisia.coconut.Event.common.ErrorEvent;
+import com.compvisia.coconut.Event.common.WarningEvent;
 import com.compvisia.coconut.Input.Mouse;
 import com.compvisia.coconut.common.Math.Vector2i;
 import org.lwjgl.glfw.GLFWImage;
@@ -19,7 +22,7 @@ public class Window {
     public static Mouse m;
 
     public Window(String name, Vector2i size, String icon) {
-        glfwInit();
+        if(!glfwInit()) EventExecutor.callEvent(new ErrorEvent("GLFW did not Initialize"));
 
         Window.size = size;
 
@@ -29,7 +32,10 @@ public class Window {
         glfwSwapInterval(0);
         GL.createCapabilities();
 
-        glfwSetWindowIcon(window,getImage(icon));
+
+        if(icon != null) glfwSetWindowIcon(window,getImage(icon));
+        else EventExecutor.callEvent(new WarningEvent("No icon has been set"));
+
         updateFrame();
 
         glfwShowWindow(window);
@@ -43,7 +49,7 @@ public class Window {
     // 64x64 Image Recommended
     private GLFWImage.Buffer getImage(String icon) {
         int[] w = new int[1],h = new int[1],c = new int[1];
-        ByteBuffer d = stbi_load(icon, w, h, c, 4);
+        ByteBuffer d = stbi_load(icon, w, h, c, 0);
         assert d != null;
         GLFWImage i = GLFWImage.malloc(); i.set(512,512,d);
         GLFWImage.Buffer b = GLFWImage.malloc(1);
